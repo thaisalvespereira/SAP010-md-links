@@ -14,6 +14,7 @@
     "commit": "c17498042fc79734cec390e6314cbe810e95bf4c"
   },
   "dependencies": {
+    "babel": "^6.23.0",
     "cross-fetch": "^4.0.0",
     "init": "^0.1.2",
     "marked": "^5.1.0",
