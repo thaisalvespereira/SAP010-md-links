@@ -43,7 +43,7 @@
     "jest": "^29.6.4"
   },
   "description": "verifica os arquivos md",
-  "main": "src/cli.js",
+  "main": "./src/cli.js",
   "directories": {
     "test": "test"
   },
