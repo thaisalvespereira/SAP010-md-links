@@ -5,8 +5,8 @@
 * [1. Prefácio](#1-prefácio)
 * [2. Guia de instalação e uso](#2-guia-de-instalação-e-uso)
 * [3. Fluxograma](#3-fluxograma)
-* [4. Testes](#5-testes)
-* [5. Tecnologias Utilizadas](#4-tecnologias-utilizadas)
+* [4. Testes](#4-testes)
+* [5. Tecnologias Utilizadas](#5-tecnologias-utilizadas)
 
 ***
 
@@ -30,7 +30,7 @@ Após a instalação, certifique de ter um arquivo <strong>.md com links</strong
 
 1. Rode o comando <strong>`mdlinks` + o caminho do seu arquivo </strong>, e será retornado o caminho, text e o link do arquivo seleciondao. Veja o exemplo abaixo:  
 
-     ![mdlinks](./src/imagens/diretorio.png)
+     ![mdlinks](./src/imagens/Diretorio.png)
 
 2. Se você deseja validar os links desse arquivo, utilize a propriedade <strong>--validade</strong>, esta fará uma requisição HTTP e retornará o status e ok do seu link. <br>
 Comando: <br>
