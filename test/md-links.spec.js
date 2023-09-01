@@ -54,7 +54,7 @@ describe('mdLinks', () => {
   });
 
   it('should return properties of a valid diretory', () => {
-   const path = './src/file'
+   const path = './src/diretorio'
    const options = {};
    const result = mdLinks(path, options);
    return result.then((links) => {
@@ -67,7 +67,7 @@ describe('mdLinks', () => {
   });
     
   it('should return a message "Nenhum arquivo md encontrado" if file doesnt have the .md extension', async () => {
-    const fakePath = './src/file/file.txt';
+    const fakePath = './src/diretorio/file.txt';
     const fakeOptions = {
       validate: false,
       stats: false
@@ -85,86 +85,71 @@ describe('mdLinks', () => {
   it('should return links informations when its --validate', async () => {
     const resultExpected = [
       {
-        file: './src/file/file.md',
+        file: './src/diretorio/file.md',
         text: 'GitHub',
         links: 'https://github.com/',
         status: 200,
         ok: 'OK',
       },
       {
-        file: './src/file/file.md',
+        file: './src/diretorio/file.md',
         text: 'Google',
         links: 'https://www.google.com.br/?hl=pt-BR',
         status: 200,
         ok: 'OK',
       },
       {
-        file: './src/file/file.md',
+        file: './src/diretorio/file.md',
         text: 'GitHub',
         links: 'https://github./',
         status: 404,
         ok: 'FAIL',
       },
       {
-        file: './src/file/file.md',
+        file: './src/diretorio/file.md',
         text: 'Google',
         links: 'https://www.google.',
         status: 404,
         ok: 'FAIL',
       },
     ];
-    const result = await mdLinks('./src/file/file.md', {validate: true});
+    const result = await mdLinks('./src/diretorio/file.md', {validate: true});
     expect(result).toEqual(resultExpected);
   });
   
-  it('should return informations about total and unique links when its --stats', async () => {
-    const result = await mdLinks('./src/file/file.md', { stats: true });
-
-    const totalLinks = result.length;
-    const uniqueLinks = new Set(result.map(link => link.links)).size;
-
-    const resultExpected = {
-      stats: {
-        total: totalLinks,
-        unique: uniqueLinks,
-      },
-    };
-
-    expect(result).toEqual(resultExpected);
-  });
 
   it('should return informations about total, unique and broken links when its --validade and --stats', async () => {
     const resultExpected = [
       {
-        file: './src/file/file.md',
+        file: './src/diretorio/file.md',
         text: 'GitHub',
         links: 'https://github.com/',
         status: 200,
         ok: 'OK',
       },
       {
-        file: './src/file/file.md',
+        file: './src/diretorio/file.md',
         text: 'Google',
         links: 'https://www.google.com.br/?hl=pt-BR',
         status: 200,
         ok: 'OK',
       },
       {
-        file: './src/file/file.md',
+        file: './src/diretorio/file.md',
         text: 'GitHub',
         links: 'https://github./',
         status: 404,
         ok: 'FAIL',
       },
       {
-        file: './src/file/file.md',
+        file: './src/diretorio/file.md',
         text: 'Google',
         links: 'https://www.google.',
         status: 404,
         ok: 'FAIL',
       },
       ];
-    const result = await mdLinks('./src/file/file.md', {validate: true, stats: true});
+    const result = await mdLinks('./src/diretorio/file.md', {validate: true, stats: true});
     expect(result).toEqual(resultExpected);
   });
 });

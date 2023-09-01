@@ -21,22 +21,21 @@ function statsLinks(links){
   };
 }
 
-async function processMdLinks() {
-  try {
-    const results = await mdLinks(path, options);
-
-    if (options.validateAndStats) {
+mdLinks(path, options)
+  .then((results) => {
+    if (options.validateAndStats){
       const linkStats = statsLinks(results);
       console.log(chalk.green('Total links:' + linkStats.total));
       console.log(chalk.yellow('Unique links:' + linkStats.unique));
       console.log(chalk.red('Broken links:' + linkStats.broken));
-    } else if (options.validate) {
+
+    } else if (options.validate){
       results.forEach((link) => {
         console.log(chalk.yellow('File:' + link.file));
         console.log(chalk.magenta('Text:' + link.text));
         console.log(chalk.cyan('Link:' + link.links));
-
-        if (link.ok === 'FAIL') {
+        
+        if(link.ok === 'FAIL'){
           console.log(chalk.red('Status HTTP:' + link.status + ' ❌'))
           console.log(chalk.red('OK:' + link.ok + ' ❌'))
         } else {
@@ -45,21 +44,21 @@ async function processMdLinks() {
         }
         console.log('¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨')
       });
-    } else if (options.stats) {
+
+    } else if (options.stats){
       const linkStats = statsLinks(results);
       console.log(chalk.green('Total links:' + linkStats.total));
       console.log(chalk.yellow('Unique links:' + linkStats.unique));
+
     } else {
       results.forEach((link) => {
         console.log(chalk.yellow('File:' + link.file));
         console.log(chalk.magenta('Text:' + link.text));
         console.log(chalk.cyan('Link:' + link.links));
-        console.log('¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨')
-      });
+        console.log('¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨')      
+      })
     }
-  } catch (error) {
+  })
+  .catch((error) => {
     console.error(error);
-  }
-}
-
-processMdLinks();
+  });
