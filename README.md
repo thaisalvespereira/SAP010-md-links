@@ -10,7 +10,7 @@
 
 ***
 
-## 1. Prefácio 🤩
+## 1. Prefácio 👍
 
 [Markdown](https://pt.wikipedia.org/wiki/Markdown) é uma linguagem de marcação
 muito popular entre os programadores. É usada em muitas plataformas que
@@ -59,7 +59,7 @@ Fluxograma do projeto <br>
 
 ![fluxograma](./src/imagens/Fluxograma.png)
 
-## 4. Testes
+## 4. Testes 👌
 Testes do projeto <br>
 
 ![teste](./src/imagens/testes.png)
